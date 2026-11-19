@@ -89,6 +89,27 @@ def push_pages():
     print("  pushed gh-pages")
 
 
+def push_main():
+    """把源码改动提交并推到 main —— Netlify 靠这个触发自动构建。"""
+    try:
+        run(["git", "add", "-A"], cwd=HERE)
+        st = subprocess.run(["git", "status", "--porcelain"], cwd=HERE,
+                            capture_output=True, text=True)
+        if not st.stdout.strip():
+            print("  main: nothing to commit")
+            return
+        from datetime import datetime
+        msg = "publish: " + datetime.now().strftime("%Y-%m-%d %H:%M")
+        run(["git", "-c", "user.name=deploy-bot", "-c", "user.email=bot@local",
+             "commit", "-q", "-m", msg], cwd=HERE)
+        run(["git", "push", "origin", "main"], cwd=HERE)
+        print("  main: committed and pushed (Netlify will auto-build)")
+    except SystemExit:
+        raise
+    except Exception as exc:
+        print("  main push skipped:", exc)
+
+
 def main():
     original = CFG.read_bytes()
 
@@ -104,12 +125,13 @@ def main():
     hexo_build()
     out = HERE / "deploy-netlify.zip"
     make_zip(out)
-    print(f"    -> drag {out.name} to https://app.netlify.com/drop")
+    print(f"    -> {NETLIFY_URL} (auto) / {out.name} (manual backup)")
 
     print()
-    print("[C] restore config to Pages and rebuild")
+    print("[C] restore config to Pages, rebuild, push source to main")
     CFG.write_bytes(original)
     hexo_build()
+    push_main()
     print("    done.")
 
 
