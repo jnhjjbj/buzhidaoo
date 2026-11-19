@@ -29,7 +29,7 @@ if not PUBLIC.exists():
     sys.exit(1)
 
 tmp = Path(tempfile.mkdtemp(prefix="ghpages-"))
-print(f"  临时目录 {tmp}")
+print(f"  temp dir: {tmp}")
 for item in PUBLIC.iterdir():
     if item.is_dir():
         shutil.copytree(item, tmp / item.name)
@@ -43,11 +43,11 @@ run(["git", "-c", "user.name=deploy-bot", "-c", "user.email=bot@local",
      "commit", "-q", "-m", "deploy: update site"], cwd=tmp)
 run(["git", "remote", "add", "origin", REMOTE], cwd=tmp)
 
-print("  推送到 gh-pages ...")
+print("  pushing to gh-pages ...")
 r = run(["git", "push", "-f", "origin", "HEAD:gh-pages"], cwd=tmp)
 print("  push ok")
 
 shutil.rmtree(tmp, ignore_errors=True)
 print()
-print("  线上地址：https://jnhjjbj.github.io/buzhidaoo/")
-print("  一般 30~60 秒生效")
+print("  Live: https://jnhjjbj.github.io/buzhidaoo/")
+print("  Takes about 30-60 seconds to go live.")
