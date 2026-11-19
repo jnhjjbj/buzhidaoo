@@ -96,19 +96,25 @@ search:
 # giscus
 # https://github.com/giscus/giscus
 giscus:
-    enable: false
+    enable: true
     src: https://giscus.app/client.js
-    repo:
-    repoID:
-    category:
-    categoryID:
+    repo: jnhjjbj/buzhidaoo
+    repoID: R_kgDOV0IxGA
+    category: General
+    categoryID: DIC_kwDOV0IxGM4DLfvI
     mapping: pathname
     strict: 0
     reactionsEnabled: 1
     emitMetadata: 0
     inputPosition: bottom
     theme: preferred_color_scheme
-    lang:
+    lang: zh-CN
+
+# Busuanzi visit counter
+# https://busuanzi.ibruce.info
+busuanzi:
+    enable: true
+    src: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 
 # Gitalk
 # https://github.com/gitalk/gitalk

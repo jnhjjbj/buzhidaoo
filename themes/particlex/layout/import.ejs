@@ -3,6 +3,22 @@
 <link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 <%# Google Fonts 在墙内会挂住 window.load，导致加载动画永远转，直接去掉，走系统字体 %>
 <script> const mixins = {}; </script>
+<%# 纯原生兜底：CDN 挂了 Vue 起不来时，main.js 第一行就会抛错，
+    那里的 setTimeout 根本不会执行。这段不依赖任何库，到点必收。 %>
+<script>
+    (function () {
+        function hide() {
+            var el = document.getElementById("loading");
+            if (el) el.style.display = "none";
+            var main = document.getElementById("main");
+            if (main) main.className = "into-enter-active";
+        }
+        setTimeout(hide, 5000);
+        window.addEventListener("error", function (e) {
+            if (e && e.target && e.target.tagName === "SCRIPT") setTimeout(hide, 300);
+        }, true);
+    })();
+</script>
 <% if (theme.polyfill.enable) { %>
 <script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=<%- theme.polyfill.features %>"></script>
 <% } %>

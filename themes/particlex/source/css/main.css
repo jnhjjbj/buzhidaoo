@@ -78,6 +78,25 @@
 #footer #footer-wrap div {
     margin: 15px;
 }
+#footer-stats {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 24px;
+    justify-content: center;
+}
+#footer-stats .footer-stat {
+    color: #5c6b72;
+    white-space: nowrap;
+}
+#footer-stats .footer-stat .icon,
+#footer-stats .footer-stat .count {
+    color: #66afef;
+}
+#footer-stats .footer-stat .count {
+    font-weight: bold;
+    margin-left: 4px;
+}
 #home-card {
     width: 300px;
 }
@@ -481,6 +500,15 @@
     color: #5c6b72;
     display: inline-block;
     margin-right: 10px;
+}
+.article .info .pageview {
+    color: #5c6b72;
+    display: inline-block;
+    margin-right: 10px;
+}
+.article .info .pageview .count {
+    color: #66afef;
+    font-weight: bold;
 }
 .code-content {
     font-size: 13px;

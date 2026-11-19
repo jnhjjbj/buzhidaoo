@@ -1,5 +1,5 @@
 [build]
-  command = "hexo generate"
+  command = "node scripts/netlify-build.js"
   publish = "public"
 
 [build.environment]
@@ -9,6 +9,11 @@
 # 静态资源长缓存
 [[headers]]
   for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 

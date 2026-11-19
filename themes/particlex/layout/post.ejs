@@ -9,6 +9,15 @@
             </span>
             <%= date(page.date, "YYYY/M/D") %>
         </span>
+        <% if (is_post()) { %>
+        <span class="pageview">
+            <span class="icon">
+                <i class="fa-solid fa-eye fa-fw"></i>
+            </span>
+            <span class="count" id="busuanzi_value_page_pv">--</span>
+            <span>次阅读</span>
+        </span>
+        <% } %>
         <% if (page.categories && page.categories.data.length !== 0) { %>
         <span class="category">
             <a href="<%- url_for(page.categories.data[0].path) %>">
@@ -66,7 +75,7 @@
         <div id="gitalk-container"></div>
     </div>
     <% } %>
-    <% if (theme.giscus.enable) { %>
+    <% if (is_post() && theme.giscus.enable) { %>
     <div id="comment">
         <div id="giscus-container" class="giscus"></div>
     </div>

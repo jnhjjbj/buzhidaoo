@@ -22,5 +22,41 @@
             <% } %>
         </div>
         <% } %>
+        <% if (theme.busuanzi.enable) { %>
+        <div id="footer-stats">
+            <span class="footer-stat">
+                <i class="fa-solid fa-user fa-fw icon"></i>
+                本站访客数
+                <span class="count" id="busuanzi_value_site_uv">--</span>
+            </span>
+            <span class="footer-stat">
+                <i class="fa-solid fa-eye fa-fw icon"></i>
+                总访问量
+                <span class="count" id="busuanzi_value_site_pv">--</span>
+            </span>
+        </div>
+        <% } %>
     </div>
 </footer>
+<% if (theme.busuanzi.enable) { %>
+<script>
+    (function () {
+        // 等 window.load 之后再动态插入不蒜子脚本（async），
+        // 即使统计服务卡住也不会阻塞页面加载进度。
+        function loadBusuanzi() {
+            var script = document.createElement("script");
+            script.src = "<%- theme.busuanzi.src %>";
+            script.async = true;
+            script.onerror = function () {
+                // 加载失败时保留占位符 "--"：不报错、也不留空框。
+            };
+            document.body.appendChild(script);
+        }
+        function schedule() {
+            setTimeout(loadBusuanzi, 0);
+        }
+        if (document.readyState === "complete") schedule();
+        else window.addEventListener("load", schedule);
+    })();
+</script>
+<% } %>
