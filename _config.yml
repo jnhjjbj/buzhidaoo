@@ -4,17 +4,18 @@
 
 # Site
 # ↓↓↓ 想改成自己的，只改下面这几行就够了 ↓↓↓
-title: CyberNotes                 # 站点标题（左上角 + 浏览器标签）
-subtitle: '记录安全、代码与折腾'   # 首页大标题下方的副标题
-description: '一个网络安全学习者的笔记站：靶场通关、实训记录、工具使用与代码折腾。'
-keywords: 网络安全,渗透测试,靶场,Hexo,Butterfly,学习笔记
-author: CyberNotes                # 博主昵称（侧边栏 + 版权信息）
+title: 不知道哦                 # 站点标题（左上角 + 浏览器标签）
+subtitle: '大肥鱼🐟交流'   # 首页大标题下方的副标题
+description: '一个插件站：'
+keywords: DSH,大肥鱼
+author: 不不不不不不不                # 博主昵称（侧边栏 + 版权信息）
 language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
 ## 部署后把 url 改成你的真实域名，例如 https://xxx.netlify.app
-url: https://blog.example.com
+url: https://jnhjjbj.github.io/buzhidaoo
+root: /buzhidaoo/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -44,16 +45,19 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
-syntax_highlighter: highlight.js
+# ParticleX 自带代码高亮，必须关掉 Hexo 的，否则冲突
+syntax_highlighter:
 highlight:
-  line_number: true
+  enable: false
+  line_number: false
   auto_detect: false
   tab_replace: ''
-  wrap: true
+  wrap: false
   hljs: false
 prismjs:
-  preprocess: true
-  line_number: true
+  enable: false
+  preprocess: false
+  line_number: false
   tab_replace: ''
 
 # Home page setting
@@ -97,8 +101,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: butterfly
-
+theme: particlex
 # 本地搜索（配合主题 search.use: local_search）
 search:
   path: search.xml
@@ -115,3 +118,11 @@ search:
 ##   branch: gh-pages
 deploy:
   type: ''
+
+# ParticleX 不需要年/月归档
+archive_generator:
+  enabled: true
+  per_page: 0
+  yearly: false
+  monthly: false
+  daily: false
