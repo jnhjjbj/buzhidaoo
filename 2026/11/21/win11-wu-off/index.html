@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>真正关掉 Windows 更新：为什么你改了十遍都没用 | 不知道哦</title>
+    <meta name="author" content="不不不不不不不" />
+    <meta name="description" content="一个插件站：" />
+    <meta name="keywords" content="DSH,大肥鱼" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/buzhidaoo/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+<script> const mixins = {}; </script>
+
+<script>
+    (function () {
+        function hide() {
+            var el = document.getElementById("loading");
+            if (el) el.style.display = "none";
+            var main = document.getElementById("main");
+            if (main) main.className = "into-enter-active";
+        }
+        setTimeout(hide, 5000);
+        window.addEventListener("error", function (e) {
+            if (e && e.target && e.target.tagName === "SCRIPT") setTimeout(hide, 300);
+        }, true);
+    })();
+</script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/buzhidaoo/js/lib/highlight.js"></script>
+
+
+
+<script src="/buzhidaoo/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/buzhidaoo/css/main.css" />
+
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/buzhidaoo/atom.xml" title="不知道哦" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    
+                    <div class="loading-spinner" aria-label="loading"></div>
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/buzhidaoo/">
+            <span>不知道哦</span>
+        </a>
+        
+        <a href="/buzhidaoo/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/buzhidaoo/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/buzhidaoo/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/buzhidaoo/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/buzhidaoo/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;不知道哦</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/buzhidaoo/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/buzhidaoo/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/buzhidaoo/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/buzhidaoo/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/buzhidaoo/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>真正关掉 Windows 更新：为什么你改了十遍都没用</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/11/21
+        </span>
+        
+        <span class="pageview">
+            <span class="icon">
+                <i class="fa-solid fa-eye fa-fw"></i>
+            </span>
+            <span class="count" id="busuanzi_value_page_pv">--</span>
+            <span>次阅读</span>
+        </span>
+        
+        
+        <span class="category">
+            <a href="/buzhidaoo/categories/%E5%B7%A5%E5%85%B7/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                工具
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/buzhidaoo/tags/Windows/" style="color: #03a9f4">
+                    Windows
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/buzhidaoo/tags/PowerShell/" style="color: #ffa2c4">
+                    PowerShell
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/buzhidaoo/tags/%E5%BC%80%E6%BA%90/" style="color: #00a596">
+                    开源
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>“我把 Windows 更新关了，怎么还在偷偷下载？”</p>
+<p>这句话我见过太多次。自己也试过：服务停了、任务禁了、组策略改了、hosts 也加了。<br><strong>重启一次，全部还原。</strong></p>
+<p>后来花了一晚上把这件事查到底，终于知道问题在哪了 —— 不是你操作不对，是微软有三道锁。</p>
+<hr>
+<h2 id="第一道锁：服务是「触发器启动」"><a href="#第一道锁：服务是「触发器启动」" class="headerlink" title="第一道锁：服务是「触发器启动」"></a>第一道锁：服务是「触发器启动」</h2><p>你以为：</p>
+<pre><code>wuauserv（Windows Update）→ 设成禁用 → 完事
+</code></pre>
+<p>实际上：</p>
+<pre><code>UsoSvc（更新编排器）自己会起来
+    ↓
+它发现 wuauserv 没跑
+    ↓
+把 wuauserv 拉起来
+</code></pre>
+<p><code>UsoSvc</code> 不是普通服务，是<strong>触发器启动</strong>（trigger-start）。<br>你把 <code>wuauserv</code> 设成禁用，它照样能被拉起来。<br><strong>必须两个一起按死。</strong></p>
+<hr>
+<h2 id="第二道锁：WaaSMedicSvc-专门负责还原"><a href="#第二道锁：WaaSMedicSvc-专门负责还原" class="headerlink" title="第二道锁：WaaSMedicSvc 专门负责还原"></a>第二道锁：<code>WaaSMedicSvc</code> 专门负责还原</h2><p>这个服务全名是 Windows Update Medic Service（更新医生）。</p>
+<p>它的工作就是：<strong>发现你的更新配置被改了，改回去。</strong></p>
+<p>而且它受 <strong>TrustedInstaller</strong> 保护：</p>
+<pre><code class="language-powershell">PS&gt; Set-Service WaaSMedicSvc -StartupType Disabled
+Set-Service : 无法配置服务 &quot;Windows 更新医生服务&quot;，Access is denied
+</code></pre>
+<p>管理员也没用。要这样才能动它：</p>
+<pre><code class="language-powershell">takeown /f &quot;HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc&quot;
+# 然后改注册表 ACL，把 Start 设成 4
+</code></pre>
+<p><strong>这才是关键的一步。</strong> 不拿下它，前面做的全是白工。</p>
+<hr>
+<h2 id="第三道锁：家庭版根本不支持「自动更新」策略"><a href="#第三道锁：家庭版根本不支持「自动更新」策略" class="headerlink" title="第三道锁：家庭版根本不支持「自动更新」策略"></a>第三道锁：家庭版根本不支持「自动更新」策略</h2><p>网上教程都会让你改这个：</p>
+<pre><code>HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
+    NoAutoUpdate = 1
+</code></pre>
+<p>我本机实测（Windows 11 家庭版 26200）：</p>
+<pre><code>19:00:00  写入 NoAutoUpdate = 1
+19:02:00  键不存在了
+</code></pre>
+<p><strong>家庭版不支持这个策略，系统会主动把它删掉。</strong></p>
+<p>专业版才认。家庭版唯一有效的路，就是<strong>服务层禁用</strong>。</p>
+<hr>
+<h2 id="还有一个坑：你的-hosts-不是你的"><a href="#还有一个坑：你的-hosts-不是你的" class="headerlink" title="还有一个坑：你的 hosts 不是你的"></a>还有一个坑：你的 hosts 不是你的</h2><p>想从 DNS 层屏蔽？先看看这个：</p>
+<pre><code class="language-powershell">Get-Content C:\Windows\System32\drivers\etc\hosts -Tail 5
+</code></pre>
+<p>如果你装了 <strong>Steam++ &#x2F; Watt Toolkit</strong>，会看到：</p>
+<pre><code># Steam++ Start
+...
+# Steam++ End
+</code></pre>
+<p><strong>hosts 由它接管。</strong> 你手写进去的阻断条目，刷新一次就被覆盖掉。</p>
+<p>这就是为什么很多人「明明加了 hosts 还是没用」。</p>
+<hr>
+<h2 id="所以做了这个工具"><a href="#所以做了这个工具" class="headerlink" title="所以做了这个工具"></a>所以做了这个工具</h2><p>既然关起来这么费劲，干脆做成脚本，而且<strong>必须能一键还原</strong>。</p>
+<p>仓库：<a target="_blank" rel="noopener" href="https://github.com/jnhjjbj/win11-wu-off"><strong>jnhjjbj&#x2F;win11-wu-off</strong></a></p>
+<pre><code>wu-off.ps1      关闭 / 查看 / 还原
+wu-guard.ps1    守护：把被系统还原的设置压回去
+disable.bat     双击关闭（自动提权）
+restore.bat     双击还原（自动提权）
+</code></pre>
+<p>零依赖，纯 PowerShell，兼容 Windows PowerShell 5.1。</p>
+<hr>
+<h2 id="它到底改了什么"><a href="#它到底改了什么" class="headerlink" title="它到底改了什么"></a>它到底改了什么</h2><table>
+<thead>
+<tr>
+<th>层</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务</td>
+<td><code>wuauserv</code> &#x2F; <code>UsoSvc</code> &#x2F; <code>WaaSMedicSvc</code> → <strong>Stopped + Disabled</strong></td>
+</tr>
+<tr>
+<td>策略</td>
+<td>隐藏更新入口、禁止自动装驱动、关闭 P2P 分发</td>
+</tr>
+<tr>
+<td>计划任务</td>
+<td>禁用 <code>UpdateOrchestrator</code> 下 4 个更新任务</td>
+</tr>
+<tr>
+<td>守护</td>
+<td>登录时 + 每 30 分钟复查并压回去</td>
+</tr>
+</tbody></table>
+<p>关键代码就三行：</p>
+<pre><code class="language-powershell">foreach ($n in @(&#39;wuauserv&#39;,&#39;UsoSvc&#39;,&#39;WaaSMedicSvc&#39;)) {
+    Stop-Service -Name $n -Force
+    Set-Service  -Name $n -StartupType Disabled
+}
+</code></pre>
+<p>看起来简单，但<strong>少了 <code>WaaSMedicSvc</code>，前两行会在几分钟内被还原</strong>。</p>
+<hr>
+<h2 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h2><p>任何改动都是可逆的：</p>
+<pre><code class="language-powershell">.\wu-off.ps1 -Restore
+</code></pre>
+<p>还原服务启动类型、删掉策略键、重新启用更新任务。建议还原后重启一次。</p>
+<hr>
+<h2 id="说点实话"><a href="#说点实话" class="headerlink" title="说点实话"></a>说点实话</h2><p>这个脚本<strong>不建议给所有人用</strong>。</p>
+<pre><code>✓ 适合：个人机器、流量紧张、不想被强制重启打断工作
+✗ 不适合：公司电脑、服务器、你指望它跑安全补丁的机器
+</code></pre>
+<p>代价很明确：<strong>不再收到安全补丁</strong>。</p>
+<p>我把风险写进 README 了，装之前请看一眼。出问题就 <code>restore.bat</code>，别硬撑着。</p>
+<hr>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>Windows 的更新机制设计得挺「固执」的 —— 三道锁，每一道都够你查半天。</p>
+<p>如果你也卡在「关了又回来」这一步，希望这个仓库能省你一个晚上。</p>
+<blockquote>
+<p>代码：<a target="_blank" rel="noopener" href="https://github.com/jnhjjbj/win11-wu-off">github.com&#x2F;jnhjjbj&#x2F;win11-wu-off</a><br>协议：MIT</p>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 不知道哦
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;不不不不不不不
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        
+        <div id="footer-stats">
+            <span class="footer-stat">
+                <i class="fa-solid fa-user fa-fw icon"></i>
+                本站访客数
+                <span class="count" id="busuanzi_value_site_uv">--</span>
+            </span>
+            <span class="footer-stat">
+                <i class="fa-solid fa-eye fa-fw icon"></i>
+                总访问量
+                <span class="count" id="busuanzi_value_site_pv">--</span>
+            </span>
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+    (function () {
+        // 等 window.load 之后再动态插入不蒜子脚本（async），
+        // 即使统计服务卡住也不会阻塞页面加载进度。
+        function loadBusuanzi() {
+            var script = document.createElement("script");
+            script.src = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
+            script.async = true;
+            script.onerror = function () {
+                // 加载失败时保留占位符 "--"：不报错、也不留空框。
+            };
+            document.body.appendChild(script);
+        }
+        function schedule() {
+            setTimeout(loadBusuanzi, 0);
+        }
+        if (document.readyState === "complete") schedule();
+        else window.addEventListener("load", schedule);
+    })();
+</script>
+
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/buzhidaoo/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="jnhjjbj/buzhidaoo"
+    data-repo-id="R_kgDOV0IxGA"
+    data-category="General"
+    data-category-id="DIC_kwDOV0IxGM4DLfvI"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>

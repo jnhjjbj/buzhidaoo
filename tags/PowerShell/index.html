@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>Tags: PowerShell | 不知道哦</title>
+    <meta name="author" content="不不不不不不不" />
+    <meta name="description" content="一个插件站：" />
+    <meta name="keywords" content="DSH,大肥鱼" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/buzhidaoo/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+<script> const mixins = {}; </script>
+
+<script>
+    (function () {
+        function hide() {
+            var el = document.getElementById("loading");
+            if (el) el.style.display = "none";
+            var main = document.getElementById("main");
+            if (main) main.className = "into-enter-active";
+        }
+        setTimeout(hide, 5000);
+        window.addEventListener("error", function (e) {
+            if (e && e.target && e.target.tagName === "SCRIPT") setTimeout(hide, 300);
+        }, true);
+    })();
+</script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/buzhidaoo/js/lib/highlight.js"></script>
+
+
+
+<script src="/buzhidaoo/js/lib/preview.js"></script>
+
+
+
+
+
+<link rel="stylesheet" href="/buzhidaoo/css/main.css" />
+
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/buzhidaoo/atom.xml" title="不知道哦" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    
+                    <div class="loading-spinner" aria-label="loading"></div>
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/buzhidaoo/">
+            <span>不知道哦</span>
+        </a>
+        
+        <a href="/buzhidaoo/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/buzhidaoo/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/buzhidaoo/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/buzhidaoo/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/buzhidaoo/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;不知道哦</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/buzhidaoo/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/buzhidaoo/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/buzhidaoo/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/buzhidaoo/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/buzhidaoo/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div id="archives">
+    
+    <div class="categories-tags">
+        
+        
+        
+        <span>
+            <a href="/buzhidaoo/tags/DSH/" style="background: #00a596">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                DSH
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/buzhidaoo/tags/%E5%AE%89%E5%85%A8/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                安全
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/buzhidaoo/tags/Node-js/" style="background: #ffa2c4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                Node.js
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/buzhidaoo/tags/Windows/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                Windows
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/buzhidaoo/tags/PowerShell/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                PowerShell
+            </a>
+        </span>
+        
+        
+        
+        
+        
+        <span>
+            <a href="/buzhidaoo/tags/%E5%BC%80%E6%BA%90/" style="background: #00a596">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                开源
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2026/11/21</div>
+            <a href="/buzhidaoo/2026/11/21/win11-wu-off/">
+                <h3>真正关掉 Windows 更新：为什么你改了十遍都没用</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/buzhidaoo/categories/%E5%B7%A5%E5%85%B7/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        工具
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/buzhidaoo/tags/Windows/" style="color: #00bcd4">
+                            Windows
+                        </a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/buzhidaoo/tags/PowerShell/" style="color: #ffa2c4">
+                            PowerShell
+                        </a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/buzhidaoo/tags/%E5%BC%80%E6%BA%90/" style="color: #03a9f4">
+                            开源
+                        </a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 不知道哦
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;不不不不不不不
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        
+        <div id="footer-stats">
+            <span class="footer-stat">
+                <i class="fa-solid fa-user fa-fw icon"></i>
+                本站访客数
+                <span class="count" id="busuanzi_value_site_uv">--</span>
+            </span>
+            <span class="footer-stat">
+                <i class="fa-solid fa-eye fa-fw icon"></i>
+                总访问量
+                <span class="count" id="busuanzi_value_site_pv">--</span>
+            </span>
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+    (function () {
+        // 等 window.load 之后再动态插入不蒜子脚本（async），
+        // 即使统计服务卡住也不会阻塞页面加载进度。
+        function loadBusuanzi() {
+            var script = document.createElement("script");
+            script.src = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
+            script.async = true;
+            script.onerror = function () {
+                // 加载失败时保留占位符 "--"：不报错、也不留空框。
+            };
+            document.body.appendChild(script);
+        }
+        function schedule() {
+            setTimeout(loadBusuanzi, 0);
+        }
+        if (document.readyState === "complete") schedule();
+        else window.addEventListener("load", schedule);
+    })();
+</script>
+
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/buzhidaoo/js/main.js"></script>
+    
+</body>
+</html>
